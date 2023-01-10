@@ -30,7 +30,6 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: ^2.0.5  
-  http: ^0.13.5
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
   get_it: ^7.2.0
@@ -46,6 +45,7 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.3.3
   json_serializable: ^6.5.4
+  fl_chart: ^0.55.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

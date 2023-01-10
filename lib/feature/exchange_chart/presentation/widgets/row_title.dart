@@ -7,55 +7,65 @@ class RowTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        Expanded(
-          child: Text(
-            'Dia',
-            style: TextStyle(overflow: TextOverflow.clip, fontSize: 12),
-            softWrap: true,
-            maxLines: 2,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            'Data',
-            style: TextStyle(overflow: TextOverflow.clip, fontSize: 12),
-            softWrap: true,
-            maxLines: 2,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            'Valor',
-            style: TextStyle(overflow: TextOverflow.clip, fontSize: 12),
-            softWrap: true,
-            maxLines: 2,
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(top: 12.0),
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        border: Border.all(color: Colors.grey[300]!),
+      ),
+      child: Row(
+        children: const [
+          Expanded(
             child: Text(
-              'Variação a D-1',
-              style: TextStyle(overflow: TextOverflow.clip, fontSize: 12),
+              'Índice',
+              style: TextStyle(overflow: TextOverflow.clip, fontSize: 14),
               softWrap: true,
               maxLines: 2,
             ),
           ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(top: 12.0),
+          Expanded(
             child: Text(
-              'Variação ao 1º dia',
-              style: TextStyle(overflow: TextOverflow.clip, fontSize: 12),
+              'Data',
+              style: TextStyle(overflow: TextOverflow.clip, fontSize: 14),
               softWrap: true,
               maxLines: 2,
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 30.0),
+              child: Text(
+                'Valor',
+                style: TextStyle(overflow: TextOverflow.clip, fontSize: 14),
+                softWrap: true,
+                maxLines: 2,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: 4.0, left: 32.0),
+              child: Text(
+                'V/ Í-1',
+                style: TextStyle(overflow: TextOverflow.clip, fontSize: 14.0),
+                softWrap: true,
+                maxLines: 2,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: 12.0, left: 32.0),
+              child: Text(
+                'V/ 1º Í',
+                style: TextStyle(overflow: TextOverflow.clip, fontSize: 14.0),
+                softWrap: true,
+                maxLines: 2,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -51,7 +51,7 @@ class Result {
 
   Result.fromJson(Map<String, dynamic> json) {
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
-    timestamp = json['timestamp'].cast<int>();
+    timestamp = json['timestamp'] != null ? json['timestamp'].cast<int>() : [];
     indicators = json['indicators'] != null
         ? Indicators.fromJson(json['indicators'])
         : null;
@@ -222,7 +222,7 @@ class Pre {
 }
 
 class Indicators {
-  List<Quote>? quote;
+  List<Quote?>? quote;
 
   Indicators({this.quote});
 
@@ -238,7 +238,7 @@ class Indicators {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (quote != null) {
-      data['quote'] = quote!.map((v) => v.toJson()).toList();
+      data['quote'] = quote!.map((v) => v!.toJson()).toList();
     }
     return data;
   }
@@ -249,16 +249,16 @@ class Quote {
   List<double>? close;
   List<int>? high;
   List<double>? low;
-  List<double?>? open;
+  List<double?>? open = [0.0];
 
-  Quote({this.volume, this.close, this.high, this.low, this.open});
+  Quote({this.volume, this.close, this.high, this.low, required this.open});
 
   Quote.fromJson(Map<String, dynamic> json) {
-    volume = json['volume'].cast<int>();
-    close = json['close'].cast<double>();
-    high = json['high'].cast<int>();
-    low = json['low'].cast<double>();
-    open = json['open'].cast<double>();
+    volume = json['volume'] != null ? json['volume'].cast<int>() : [];
+    close = json['close'] != null ? json['close'].cast<double>() : [];
+    high = json['high'] != null ? json['high'].cast<int>() : [];
+    low = json['low'] != null ? json['low'].cast<double>() : [];
+    open = json['open'] != null ? json['open'].cast<double?>() : [0.0];
   }
 
   Map<String, dynamic> toJson() {
@@ -267,7 +267,7 @@ class Quote {
     data['close'] = close;
     data['high'] = high;
     data['low'] = low;
-    data['open'] = open ?? 0.0;
+    data['open'] = open;
     return data;
   }
 }

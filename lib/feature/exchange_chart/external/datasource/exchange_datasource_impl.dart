@@ -1,7 +1,4 @@
-import 'dart:convert' as convert;
-
 import 'package:dio/dio.dart';
-import 'package:http/http.dart';
 
 import '../../domain/entities/exchange_entity.dart';
 import '../../domain/failures/exception.dart';

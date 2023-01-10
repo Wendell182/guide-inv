@@ -1,4 +1,4 @@
-import 'package:http/http.dart';
+import 'package:dio/dio.dart';
 
 class ApiException implements Exception {
   final String? msg;
@@ -7,8 +7,8 @@ class ApiException implements Exception {
   ApiException({required this.statusCode, this.msg});
 
   ApiException.fromResponse(Response response)
-      : this.statusCode = response.statusCode,
-        this.msg = response.body;
+      : statusCode = response.data['statusCode'],
+        msg = response.data['msg'];
 }
 
 class ApiMessageException implements Exception {

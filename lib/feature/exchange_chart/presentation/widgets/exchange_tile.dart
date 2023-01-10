@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ExchangeTile extends StatelessWidget {
-  final String day;
+  final int day;
   final String date;
   final double? value;
-  final String variationD1;
-  final String variationFirstDay;
+  final double variationD1;
+  final double variationFirstDay;
 
   const ExchangeTile({
     Key? key,
@@ -18,15 +18,46 @@ class ExchangeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(day),
-        Text(date),
-        Text(value.toString()),
-        Text(variationD1),
-        Text(variationFirstDay),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(day.toString().padLeft(2, '0')),
+          Text(date),
+          Text(value!.toDouble().toStringAsFixed(3)),
+          RichText(
+            text: TextSpan(
+              text: variationD1.toDouble().toStringAsFixed(2) + ' %',
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                    text: variationD1.isNegative ? '↓' : '↑',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: variationD1.isNegative
+                            ? Colors.red
+                            : Colors.green)),
+              ],
+            ),
+          ),
+          RichText(
+            text: TextSpan(
+              text: variationD1.toDouble().toStringAsFixed(2) + ' %',
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                    text: variationD1.isNegative ? '↓' : '↑',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: variationD1.isNegative
+                            ? Colors.red
+                            : Colors.green)),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

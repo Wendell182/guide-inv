@@ -6,15 +6,10 @@ String parseDateInline(int timestamp) {
   return DateFormat('dd/MM/yyyy').format(dt);
 }
 
-String parseMoney(String? money) {
-  if (money == null) return "R\$ 0,00";
-
-  num amount = double.parse(money);
-
-  NumberFormat formatter =
-      NumberFormat.currency(locale: "pt_BR", symbol: "R\$");
-
-  return formatter.format(amount);
+String parseDateWithTime(int timestamp) {
+  var stamp = timestamp;
+  var dt = DateTime.fromMillisecondsSinceEpoch(stamp * 1000);
+  return DateFormat('dd/MM - hh:mm').format(dt);
 }
 
 extension Strings on String {
